@@ -330,3 +330,9 @@ This makes it easy to version your API, and you can later add other routes in th
 
 This will return the data in JSON format with a structured response, making it easy to handle in any frontend or client.
 
+
+# create home controller
+
+```
+php spark make:controller api/v2/HomeController
+```
