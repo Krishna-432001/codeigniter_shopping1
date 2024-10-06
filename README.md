@@ -100,6 +100,10 @@ php spark migrate
 
 ### Step 3: Create the Model
 
+```
+php spark make:model Category
+```
+
 1. **Create the Model File**  
    Create a new model file named `CategoryModel.php` in `app/Models/`.
 
