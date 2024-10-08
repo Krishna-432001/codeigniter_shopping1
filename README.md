@@ -336,7 +336,7 @@ This will return the data in JSON format with a structured response, making it e
 ```
 php spark make:controller AuthController
 ```
-
+# auth controller
 ```
 <?php
 
@@ -352,7 +352,7 @@ class AuthController extends BaseController
         return view('frontend/login');
     }
 }
-````
+```
 
 # Routes
 ```
@@ -372,3 +372,22 @@ $routes->group('frontend', ['namespace' => 'App\Controllers'], function($routes)
 
 });
 ```
+
+# spark migrate
+```
+php spark migrate
+```
+# create model 
+```
+php spark make:model Product
+
+```
+# create migration
+```
+php spark make:migration create_products_table
+```
+# seeder code create 
+```
+php spark make:seeder ProductSeeder
+```
+
