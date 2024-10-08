@@ -7,6 +7,10 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->get('/', 'HomeController::index');
 
+$routes->get('/frontend/about', 'HomeController::about');
+
+
+
 // Frontend
 $routes->group('frontend', ['namespace' => 'App\Controllers'], function($routes) {
 
