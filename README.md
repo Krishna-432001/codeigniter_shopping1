@@ -331,8 +331,44 @@ This makes it easy to version your API, and you can later add other routes in th
 This will return the data in JSON format with a structured response, making it easy to handle in any frontend or client.
 
 
-# create home controller
+# create Auth controller
 
 ```
-php spark make:controller api/v2/HomeController
+php spark make:controller AuthController
+```
+
+```
+<?php
+
+namespace App\Controllers;
+
+use App\Controllers\BaseController;
+use CodeIgniter\HTTP\ResponseInterface;
+
+class AuthController extends BaseController
+{
+    public function login()
+    {
+        return view('frontend/login');
+    }
+}
+````
+
+# Routes
+```
+<?php
+
+use CodeIgniter\Router\RouteCollection;
+
+/**
+ * @var RouteCollection $routes
+ */
+$routes->get('/', 'HomeController::index');
+
+// Frontend
+$routes->group('frontend', ['namespace' => 'App\Controllers'], function($routes) {
+
+    $routes->get('login', 'AuthController::login');
+
+});
 ```
