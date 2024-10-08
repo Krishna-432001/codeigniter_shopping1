@@ -7,6 +7,17 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->get('/', 'HomeController::index');
 
+// Frontend
+$routes->group('frontend', ['namespace' => 'App\Controllers'], function($routes) {
+
+    $routes->get('login', 'AuthController::login');
+
+});
+
+
+
+
+
 
 // API V1
 $routes->group('api/v1', ['namespace' => 'App\Controllers\Api\V1'], function($routes) {
