@@ -7,7 +7,7 @@
                     <a href="<?= base_url('/') ?>" style="color: white; text-decoration: none;">Home</a>
                 </li>
                 <li style="margin: 0 15px;">
-                    <a href="<?= base_url('about') ?>" style="color: white; text-decoration: none;">About Us</a>
+                    <a href="<?= base_url('frontend/about') ?>" style="color: white; text-decoration: none;">About Us</a>
                 </li>
                 <li style="margin: 0 15px;">
                     <a href="<?= base_url('services') ?>" style="color: white; text-decoration: none;">Services</a>
