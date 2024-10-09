@@ -5,11 +5,19 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
 
+use App\Models\Category;
+
 class HomeController extends BaseController
 {
     public function index()
     {
-        return view('frontend/home');
+        // Instantiate the model
+        $category= new Category();
+        
+        // Fetch all categories
+        $data['categories'] = $category->findAll(); 
+
+        return view('frontend/home', $data);
     }
 
     public function about()
