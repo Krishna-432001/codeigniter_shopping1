@@ -22,11 +22,12 @@
     <!-- Include the Header partial -->
     <?= $this->include('frontend/layout/header') ?>
 
-    <!-- Include the Topbar partial -->
-    <?= $this->include('frontend/layout/topbar') ?>
+
 
     <!-- Content Section -->
     <?= $this->renderSection('content') ?>
+
+     
 
     <!-- Include the Footer partial -->
     <?= $this->include('frontend/layout/footer') ?>
