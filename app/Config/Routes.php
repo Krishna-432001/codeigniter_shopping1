@@ -9,6 +9,10 @@ $routes->get('/', 'HomeController::index');
 
 $routes->get('/frontend/about', 'HomeController::about');
 
+$routes->get('/frontend/services', 'HomeController::services');
+
+$routes->get('/frontend/contact', 'HomeController::contact');
+
 
 
 // Frontend
@@ -18,6 +22,32 @@ $routes->group('frontend', ['namespace' => 'App\Controllers'], function($routes)
 
 });
 
+
+// Admin dashboard
+
+$routes->group('admin', ['namespace' => 'App\Controllers\Admin'], function($routes) {
+
+    // Before Login
+    $routes->group('', ['filter' => 'authfilter:guest'], function($routes) {
+
+        $routes->get('login', 'AuthController::login', ['as' => 'admin.login']);
+
+        $routes->post('auth/login', 'AuthController::authenticate', ['as' => 'admin.authenticate']);    
+    
+    });
+
+    // after Login
+    $routes->group('', ['filter' => 'authfilter:auth'], function($routes) {
+
+        $routes->get('', 'AuthController::index', ['as' => 'admin.home']);
+
+        $routes->get('dashboard', 'AuthController::index', ['as' => 'admin.dashboard']);
+    
+        $routes->get('logout', 'AuthController::logout', ['as' => 'admin.logout']);    
+    
+    });        
+
+});
 
 
 
