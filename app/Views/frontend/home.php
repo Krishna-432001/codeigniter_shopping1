@@ -161,25 +161,29 @@
 
     <div class="container" id="imageContainer"></div>
 
-    <div class="form-container">
-        <h2>Product Categories</h2>
-        <form action="<?= base_url('submit-category') ?>" method="post">
-            <div class="form-group">
-                <label for="category">Select Category:</label>
-                <select id="category" name="category" class="category-select">
-                    <option value="" disabled selected>Select a category</option>
-                    <option value="1">Category 1</option>
-                    <option value="2">Category 2</option>
-                    <option value="3">Category 3</option>
-                    <option value="4">Category 4</option>
-                </select>
-            </div>
+ <div class="form-container">
+    <h2>Product Categories</h2>
+    <form action="<?= base_url('submit-category') ?>" method="post">
+        <?= csrf_field() ?> <!-- CSRF protection -->
+        <div class="form-group">
+            <label for="category">Select Category:</label>
+            <select id="category" name="category" class="category-select">
+                <option value="" disabled selected>Select a category</option>
+                <?php if (!empty($categories)): ?>  <!-- Check if categories exist -->
+                    <?php foreach ($categories as $category): ?>
+                        <option value="<?= $category['id'] ?>"><?= $category['name'] ?></option>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <option value="" disabled>No categories available</option>
+                <?php endif; ?>
+            </select>
+        </div>
 
-            <div class="form-group">
-                <button type="submit">Search</button>
-            </div>
-        </form>
-    </div>
+        <div class="form-group">
+            <button type="submit">Search</button>
+        </div>
+    </form>
+</div>
 
     <script>
         // Image Scrolling Logic
