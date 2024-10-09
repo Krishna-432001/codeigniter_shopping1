@@ -13,7 +13,7 @@
             <?php foreach ($products as $product): ?>
                 <div class="col-md-3">
                     <div class="product-card">
-                    <a href="<?= site_url('product/detail/' . $product['id']) ?>" class="product-link">
+                    <a href="<?= site_url('product_detail/' . $product['id']) ?>" class="product-link">
                         <img src="<?= base_url($product['image_path']) ?>" alt="<?= esc($product['name']) ?>" class="product-image">
                         <h4><?= esc($product['name']) ?></h4>
                         <p>Price: $<?= number_format($product['price'], 2) ?></p>
@@ -30,23 +30,57 @@
 </div>
 
 <style>
-    .product-card {
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        padding: 10px;
-        text-align: center;
-        margin-bottom: 20px;
-        background-color: #fff;
-    }
-    .product-image {
-        max-width: 100%;
-        height: auto;
+ /* Product Listing Styles */
+    .product-list {
+        margin-top: 20px; /* Adjust to make space for navbar */
+        padding: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px; /* Space between product cards */
     }
 
-    .product-link {
-        text-decoration: none;
-        color: inherit;
+    .product-card {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 5px; /* Adjusted to a visible value */
+        overflow: hidden;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        transition: transform 0.2s;
     }
-</style>
+
+    .product-card:hover {
+        transform: scale(1.05);
+    }
+
+    .product-image {
+        width: 100%;
+        height: 150px;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .product-info {
+        padding: 10px;
+    }
+
+    .product-info h3 {
+        margin: 0;
+        font-size: 18px;
+        color: #00aaff;
+    }
+
+    .product-info p {
+        margin: 5px 0;
+        font-size: 14px;
+        color: #ddd;
+    }
+
+    .product-info .price {
+        font-weight: bold;
+        color: #28a745;
+    }
+
+
+    </style>
 
 <?= $this->endSection() ?>
