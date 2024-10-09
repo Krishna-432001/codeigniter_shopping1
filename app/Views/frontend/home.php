@@ -122,13 +122,15 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
+
+            gap: 20px; /* Space between product cards */
         }
 
         .product-card {
             width: 200px;
             margin: 10px;
             background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
+            border-radius: px;
             overflow: hidden;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
             transition: transform 0.2s;
@@ -195,24 +197,25 @@
         </div>
 
         <!-- Product Listing Section -->
-        <div class="product-list">
-            <?php if (!empty($products)): ?>  <!-- Check if products exist -->
-                <?php foreach ($products as $product): ?>
-                    <div class="product-card">
-                        <div class="product-image" style="background-image: url('<?= base_url('images/products/' . $product['image_path']) ?>');"></div>
-                        <div class="product-info">
-                            <h3><?= $product['name'] ?></h3>
-                            <p><?= $product['description'] ?></p>
-                            <p class="price">₹<?= $product['price'] ?></p>
-                        </div>
+    <div class="product-list">
+        <?php if (!empty($products)): ?>  <!-- Check if products exist -->
+            <?php foreach ($products as $product): ?>
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('<?= base_url('images/products/' . $product['image_path']) ?>');">
+                        <!-- Debugging output for image URL -->
+                        <p style="display: none;"><?= base_url('images/products/' . $product['image_path']) ?></p> <!-- Hidden for debugging -->
                     </div>
-                <?php endforeach; ?>
-            <?php else: ?>
-                <p>No products available</p>
-            <?php endif; ?>
-        </div>
+                    <div class="product-info">
+                        <h3><?= $product['name'] ?></h3>
+                        <p><?= $product['description'] ?></p>
+                        <p class="price">₹<?= number_format($product['price'], 2) ?></p> <!-- Format price to two decimal places -->
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <p>No products available</p>
+        <?php endif; ?>
     </div>
-
 </body>
 </html>
 
