@@ -5,11 +5,13 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
 
+use App\Models\User;
+
 class AuthController extends BaseController
 {
     public function login()
     {
-        return view('frontend/login');
+        return view('frontend/auth/login');
     }
 
     public function authenticate()
@@ -40,6 +42,8 @@ class AuthController extends BaseController
             // Log the user in
             session()->set('user', $user);
 
+            echo "working";
+
             // Redirect to dashboard or home page
             return redirect()->to('/');
         }
@@ -62,7 +66,7 @@ class AuthController extends BaseController
 
     public function register()
     {
-        return view('frontend/register');
+        return view('frontend/auth/register');
     }
 
     public function store()
