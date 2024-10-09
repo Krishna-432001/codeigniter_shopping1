@@ -22,7 +22,7 @@ class CartController extends BaseController
         $userId = session()->get('user_id'); // Assuming you are using session for user authentication
         $data['carts'] = $this->cart->where('user_id', $userId)->findAll();
 
-        return view('frontend/cart', $data); // Update with your view path
+        return view('frontend/cart/cart', $data); // Update with your view path
     }
 
     // Add product to cart
@@ -61,8 +61,13 @@ class CartController extends BaseController
     {
         $quantity = $this->request->getPost('quantity');
 
-        if ($quantity <= 0) {
+        if ($quantity < 1) {
             return redirect()->to('/cart')->with('error', 'Quantity must be greater than zero');
+        }
+
+        $cartItem = $this->cart->find($cartId);
+        if (!$cartItem) {
+            return redirect()->to('/cart')->with('error', 'Cart item not found');
         }
 
         $this->cart->update($cartId, [
@@ -75,6 +80,11 @@ class CartController extends BaseController
     // Remove product from cart
     public function remove($cartId)
     {
+        $cartItem = $this->cart->find($cartId);
+        if (!$cartItem) {
+            return redirect()->to('/cart')->with('error', 'Cart item not found');
+        }
+
         $this->cart->delete($cartId);
         return redirect()->to('/cart')->with('success', 'Product removed from cart');
     }
@@ -83,6 +93,10 @@ class CartController extends BaseController
     public function clear()
     {
         $userId = session()->get('user_id');
+        if (!$userId) {
+            return redirect()->to('/cart')->with('error', 'User not authenticated');
+        }
+
         $this->cart->where('user_id', $userId)->delete();
         return redirect()->to('/cart')->with('success', 'Cart cleared successfully');
     }
