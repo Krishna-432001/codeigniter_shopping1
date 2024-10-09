@@ -11,7 +11,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Scroll Page with Login and Signup</title>
+    <title>Login</title>
     <style>
         body, html {
             margin: 0;
@@ -62,6 +62,13 @@
             margin-top: 80px; /* Adjust margin for navbar height */
         }
 
+        #imageContainer {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
         .image {
             width: 100%;
             height: 100vh;
@@ -79,7 +86,7 @@
         }
 
         .form-container {
-            width: 300px;
+            width: 400px; /* Adjust width for login form */
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(15px);
             border: 1px solid rgba(255, 255, 255, 0.2);
@@ -108,7 +115,7 @@
         }
 
         .form-group input {
-            width: 90%;
+            width: 100%;
             padding: 12px;
             border: 1px solid #ccc;
             border-radius: 5px;
@@ -151,56 +158,36 @@
 </head>
 <body>
 
-
     <div class="container" id="imageContainer"></div>
 
-    <div class="form-container" id="formContainer">
-        <!-- Login Form -->
-        <div id="loginForm">
-            <h2>Login</h2>
+    <div class="form-container">
+        <h2>Login</h2>
+        <form action="<?= base_url('login') ?>" method="post">
+            <?= csrf_field() ?> <!-- CSRF protection -->
             <div class="form-group">
-                <label for="loginEmail">Email:</label>
-                <input type="email" id="loginEmail" placeholder="Enter your email" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required placeholder="Enter your email">
             </div>
             <div class="form-group">
-                <label for="loginPassword">Password:</label>
-                <input type="password" id="loginPassword" placeholder="Enter your password" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required placeholder="Enter your password">
             </div>
             <div class="form-group">
-                <button onclick="handleLogin()">Login</button>
+                <button type="submit">Login</button>
             </div>
-            <div class="toggle-btn" onclick="toggleForm()">Don't have an account? Signup</div>
-        </div>
-
-        <!-- Signup Form -->
-        <div id="signupForm" style="display: none;">
-            <h2>Signup</h2>
-            <div class="form-group">
-                <label for="signupName">Name:</label>
-                <input type="text" id="signupName" placeholder="Enter your name" required>
+            <div class="toggle-btn">
+                <a href="<?= base_url('register') ?>">Don't have an account? Register here</a>
             </div>
-            <div class="form-group">
-                <label for="signupEmail">Email:</label>
-                <input type="email" id="signupEmail" placeholder="Enter your email" required>
-            </div>
-            <div class="form-group">
-                <label for="signupPassword">Password:</label>
-                <input type="password" id="signupPassword" placeholder="Enter your password" required>
-            </div>
-            <div class="form-group">
-                <button onclick="handleSignup()">Signup</button>
-            </div>
-            <div class="toggle-btn" onclick="toggleForm()">Already have an account? Login</div>
-        </div>
+        </form>
     </div>
 
     <script>
         // Image Scrolling Logic
         const imagePaths = [
-        "<?= base_url('images/image1.jpg') ?>",
-        "<?= base_url('images/image2.jpg') ?>",
-        "<?= base_url('images/image3.jpg') ?>"
-    ];
+            "<?= base_url('images/image1.jpg') ?>",
+            "<?= base_url('images/image2.jpg') ?>",
+            "<?= base_url('images/image3.jpg') ?>"
+        ];
 
         const container = document.getElementById('imageContainer');
 
@@ -229,7 +216,6 @@
             }
         });
 
-        let lastScrollTop = 0;
         window.addEventListener('wheel', (e) => {
             const delta = e.deltaY;
 
@@ -270,48 +256,8 @@
                 images[currentIndex].classList.add('visible');
             }
         }
-
-        // Login and Signup Logic
-        function toggleForm() {
-            const loginForm = document.getElementById('loginForm');
-            const signupForm = document.getElementById('signupForm');
-            if (loginForm.style.display === 'none') {
-                loginForm.style.display = 'block';
-                signupForm.style.display = 'none';
-                document.querySelector('.form-container').style.transform = 'translate(-50%, -50%)';
-            } else {
-                loginForm.style.display = 'none';
-                signupForm.style.display = 'block';
-                document.querySelector('.form-container').style.transform = 'translate(-50%, -50%)';
-            }
-        }
-
-        function handleLogin() {
-            const email = document.getElementById('loginEmail').value;
-            const password = document.getElementById('loginPassword').value;
-
-            // Perform login validation (add your own authentication logic)
-            if (email === "test@example.com" && password === "password") {
-                alert("Login successful!");
-            } else {
-                alert("Invalid email or password.");
-            }
-        }
-
-        function handleSignup() {
-            const name = document.getElementById('signupName').value;
-            const email = document.getElementById('signupEmail').value;
-            const password = document.getElementById('signupPassword').value;
-
-            // Perform signup validation (add your own registration logic)
-            if (name && email && password) {
-                alert("Signup successful! You can now log in.");
-                toggleForm(); // Switch to login form after signup
-            } else {
-                alert("Please fill in all fields.");
-            }
-        }
     </script>
+
 </body>
 </html>
 
