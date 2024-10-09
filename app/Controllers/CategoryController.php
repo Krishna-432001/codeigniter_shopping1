@@ -7,7 +7,7 @@ use CodeIgniter\Controller;
 
 class CategoryController extends Controller
 {
-    public function index()
+    public function category()
     {
         // Instantiate the model
         $category = new Category();
