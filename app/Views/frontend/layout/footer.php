@@ -21,6 +21,19 @@
             padding: 20px 0;
             text-align: center;
         }
+
+        .social-media a {
+            text-decoration: none;
+            color: #333;
+            margin: 0 10px;
+            font-size: 1.5em;
+        }
+        .social-media a:hover {
+            color: #007BFF;
+        }
+        .social-media i {
+            margin-right: 8px;
+        }
     </style>
 </head>
 <body>
@@ -43,11 +56,17 @@
                 <a href="<?= base_url('contact') ?>" style="color: white; text-decoration: none;">Contact Us</a>
             </li>
         </ul>
-        <div style="margin-top: 10px;">
-            <a href="#" style="color: white; margin: 0 10px;">Facebook</a>
-            <a href="#" style="color: white; margin: 0 10px;">Twitter</a>
-            <a href="#" style="color: white; margin: 0 10px;">Instagram</a>
-        </div>
+        <div class="social-media">
+        <a href="https://www.facebook.com" target="_blank">
+            <i class="fab fa-facebook"></i>Facebook
+        </a>
+        <a href="https://www.instagram.com" target="_blank">
+            <i class="fab fa-instagram"></i>Instagram
+        </a>
+        <a href="https://www.twitter.com" target="_blank">
+            <i class="fab fa-twitter"></i>Twitter
+        </a>
+    </div>
     </div>
 </footer>
 
