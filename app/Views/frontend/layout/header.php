@@ -73,28 +73,34 @@
     <nav>
         <h1 style="font-size: 2.5em;">Welcome to Our Website</h1>
         <ul>
+            <?php if(session()->has('user')): ?>
+                <!-- User is logged in -->
+                  <!-- Profile Dropdown -->
+                <li>
+                    <a href="#">Profile</a>
+                    <ul>
+                        <li><a href="<?= base_url('frontend/auth/my_profile') ?>">My Profile</a></li>
+                        <li><a href="<?= base_url('frontend/cart/cart') ?>">Cart</a></li>
+                        <li><a href="<?= base_url('frontend/order/orders') ?>">Orders</a></li>
+                        <li><a href="<?= base_url('frontend/order/order_items') ?>">Order Items</a></li>
+                        <li><a href="<?= base_url('frontend/order/order_history') ?>">Order History</a></li>
+                        <li><a href="<?= base_url('frontend/auth/logout') ?>">Logout</a></li>
+                        <li><a href="<?= base_url('frontend/auth/settings') ?>">Settings</a></li>
+                        <li><a href="<?= base_url('frontend/auth/address') ?>">Address</a></li>
+                    </ul>
+                </li>
+            <?php else: ?>
+                <!-- User is not logged in -->
+                <li><a href="<?= base_url('frontend/auth/login') ?>">Login</a></li>
+                <li><a href="<?= base_url('frontend/auth/register') ?>">Register</a></li>
+            <?php endif; ?>
             <li><a href="<?= base_url('/') ?>">Home</a></li>
-            <li><a href="<?= base_url('frontend/about') ?>">About Us</a></li>
-            <li><a href="<?= base_url('frontend/services') ?>">Services</a></li>
-            <li><a href="<?= base_url('frontend/contact') ?>">Contact Us</a></li>
-            <li><a href="<?= base_url('frontend/login') ?>">Login</a></li>
-            <li><a href="<?= base_url('frontend/register') ?>">Register</a></li>
-            <li><a href="<?= base_url('frontend/product') ?>">Products</a></li>
-            <li><a href="<?= base_url('frontend/category_screen') ?>">Categories</a></li>
-            <!-- Profile Dropdown -->
-            <li>
-                <a href="#">Profile</a>
-                <ul>
-                    <li><a href="<?= base_url('frontend/my_profile') ?>">My Profile</a></li>
-                    <li><a href="<?= base_url('frontend/cart') ?>">Cart</a></li>
-                    <li><a href="<?= base_url('frontend/orders') ?>">Orders</a></li>
-                    <li><a href="<?= base_url('frontend/order_items') ?>">Order Items</a></li>
-                    <li><a href="<?= base_url('frontend/order_history') ?>">Order History</a></li>
-                    <li><a href="<?= base_url('frontend/logout') ?>">Logout</a></li>
-                    <li><a href="<?= base_url('frontend/settings') ?>">Settings</a></li>
-                    <li><a href="<?= base_url('frontend/address') ?>">Address</a></li>
-                </ul>
-            </li>
+            <li><a href="<?= base_url('frontend/auth/about') ?>">About Us</a></li>
+            <li><a href="<?= base_url('frontend/auth/services') ?>">Services</a></li>
+            <li><a href="<?= base_url('frontend/auth/contact') ?>">Contact Us</a></li>
+            <li><a href="<?= base_url('frontend/product/product') ?>">Products</a></li>
+            <li><a href="<?= base_url('frontend/category/category_screen') ?>">Categories</a></li>
+           
         </ul>
     </nav>
 </header>
