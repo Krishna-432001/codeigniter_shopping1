@@ -20,7 +20,26 @@ $routes->group('frontend', ['namespace' => 'App\Controllers'], function($routes)
 
     $routes->get('login', 'AuthController::login');
 
+    $routes->post('login', 'AuthController::authenticate');
+
+    $routes->get('register', 'AuthController::register');
+
+
+    $routes->post('store', 'AuthController::store');
+
 });
+
+//categoryController
+$routes->get('categories', 'CategoryController::index');
+
+$routes->post('submit-category', 'CategoryController::submitCategory');
+
+//productController
+$routes->get('/products', 'ProductScreen::index');
+
+$routes->get('product/detail/(:num)', 'ProductController::detail/$1'); // Product detail route
+
+
 
 
 // Admin dashboard
@@ -34,6 +53,7 @@ $routes->group('admin', ['namespace' => 'App\Controllers\Admin'], function($rout
 
         $routes->post('auth/login', 'AuthController::authenticate', ['as' => 'admin.authenticate']);    
     
+        $routes->get('register', 'AuthController::register', ['as' => 'admin.register']);
     });
 
     // after Login
