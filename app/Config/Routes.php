@@ -29,6 +29,8 @@ $routes->group('frontend/auth', ['namespace' => 'App\Controllers'], function($ro
 
 
         $routes->post('store', 'AuthController::store', ['as' => 'home.store']);
+
+        $routes->post('logout', 'AuthController::logout', ['as' => 'home.logout']);
     });
 });
 
