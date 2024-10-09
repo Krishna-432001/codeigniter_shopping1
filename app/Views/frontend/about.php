@@ -136,15 +136,6 @@
         <h2>Join Us on Our Journey</h2>
         <a href="#" class="btn">Shop Now</a>
     </section>
-
-    <footer>
-        <p>&copy; 2024 ShopName. All rights reserved.</p>
-        <div class="social-media">
-            <a href="#">Facebook</a>
-            <a href="#">Instagram</a>
-            <a href="#">Twitter</a>
-        </div>
-    </footer>
 </body>
 </html>
 
