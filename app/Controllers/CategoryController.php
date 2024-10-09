@@ -10,10 +10,10 @@ class CategoryController extends Controller
     public function index()
     {
         // Instantiate the model
-        $categoryModel = new CategoryModel();
+        $category = new Category();
         
         // Fetch all categories
-        $data['categories'] = $categoryModel->findAll();
+        $data['categories'] = $category->findAll();
 
         // Load the view and pass the categories
         return view('/', $data);
