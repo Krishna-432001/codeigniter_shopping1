@@ -10,10 +10,10 @@
                     <a href="<?= base_url('frontend/about') ?>" style="color: white; text-decoration: none;">About Us</a>
                 </li>
                 <li style="margin: 0 15px;">
-                    <a href="<?= base_url('services') ?>" style="color: white; text-decoration: none;">Services</a>
+                    <a href="<?= base_url('frontend/services') ?>" style="color: white; text-decoration: none;">Services</a>
                 </li>
                 <li style="margin: 0 15px;">
-                    <a href="<?= base_url('contact') ?>" style="color: white; text-decoration: none;">Contact</a>
+                    <a href="<?= base_url('frontend/contact') ?>" style="color: white; text-decoration: none;">Contact Us</a>
                 </li>
                 <li style="margin: 0 15px;">
                 <a href="<?= base_url('frontend/login') ?>" style="color: white; text-decoration: none;">Login</a>
@@ -21,9 +21,6 @@
                 </li>
                 <li style="margin: 0 15px;">
                     <a href="<?= base_url('register') ?>" style="color: white; text-decoration: none;">Register</a>
-                </li>
-                <li style="margin: 0 15px;">
-                    <a href="<?= base_url('contact') ?>" style="color: white; text-decoration: none;">Contact Us</a>
                 </li>
             </ul>
         </nav>
