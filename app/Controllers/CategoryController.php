@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Models\CategoryModel;
+use App\Models\Category;
 use CodeIgniter\Controller;
 
 class CategoryController extends Controller
@@ -16,7 +16,7 @@ class CategoryController extends Controller
         $data['categories'] = $category->findAll();
 
         // Load the view and pass the categories
-        return view('/', $data);
+        return view('frontend/categorycategory_screen', $data);
     }
 
     public function submitCategory()
