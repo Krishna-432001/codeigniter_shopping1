@@ -28,16 +28,16 @@ class HomeController extends BaseController
 
     public function about()
     {
-        return view('frontend/about');
+        return view('frontend/auth/about');
     }
 
     public function services()
     {
-        return view('frontend/services');
+        return view('frontend/auth/services');
     }
 
     public function contact()
     {
-        return view('frontend/contact');
+        return view('frontend/auth/contact');
     }
 }
