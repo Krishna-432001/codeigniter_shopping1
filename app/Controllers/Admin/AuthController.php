@@ -123,5 +123,10 @@ class AuthController extends BaseController
         // Redirect to the login page or any page
         return redirect()->to('/admin/login')->with('error', 'You have been logged out.');
     }
+
+    public function register()
+    {
+        return view('admin/auth/register');
+    }
   
 }
