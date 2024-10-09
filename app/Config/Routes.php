@@ -9,6 +9,10 @@ $routes->get('/', 'HomeController::index');
 
 $routes->get('/frontend/about', 'HomeController::about');
 
+$routes->get('/frontend/services', 'HomeController::services');
+
+$routes->get('/frontend/contact', 'HomeController::contact');
+
 
 
 // Frontend
