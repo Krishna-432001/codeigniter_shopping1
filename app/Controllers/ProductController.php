@@ -11,23 +11,36 @@ class ProductController extends BaseController
         $product = new Product();
         $data['products'] = $product->findAll(); // Fetch all products from the database
 
-        return view('frontend/product', $data); // Load the product screen view
+        return view('frontend/product/product', $data); // Load the product screen view
     }
 
-    public function detail($id)
+    public function show($productId)
 {
     // Load your model
     $product = new Product();
 
     // Fetch the product details
-    $product = $product->find($id);
+    $product = $product->find($productId);
 
     // Check if the product exists
     if (!$product) {
         throw new \CodeIgniter\Exceptions\PageNotFoundException("Product not found");
     }
-    $data['product'] = $product;
+
+     // Fetch the related category
+     $category = $productModel->getCategory();
+        
+     // Fetch the related brand
+     $brand = $productModel->getBrand();
+
+
+      // Prepare data to pass to the view (or for output)
+        $data = [
+            'product'  => $product,
+            'category' => $category,
+            'brand'    => $brand,
+        ];
     // Pass the product data to the view
-    return view('frontend/product_detail', $data);
+    return view('frontend/product/show', $data);
 }
 }
