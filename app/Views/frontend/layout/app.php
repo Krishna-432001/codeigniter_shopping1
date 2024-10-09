@@ -7,6 +7,9 @@
         <?= $this->renderSection('title') ?: 'Default Title' ?>
     </title>
 
+  <!-- bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
     <!-- JQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
