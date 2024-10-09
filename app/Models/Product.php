@@ -52,24 +52,23 @@ class Product extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
-    public function getCategory($categoryId)
+    // Relationship to Category
+    public function getCategory()
     {
-        $db = \Config\Database::connect();
-        $builder = $db->table('categories');
-        return $builder->getWhere(['id' => $categoryId])->getRow();
+        $categoryModel = new \App\Models\Category();
+        return $categoryModel->find($this->category_id); // Fetch the related category using category_id
     }
 
-    // Fetch brand relation
-    public function getBrand($brandId)
+    // Relationship to Brand
+    public function getBrand()
     {
-        $db = \Config\Database::connect();
-        $builder = $db->table('brands');
-        return $builder->getWhere(['id' => $brandId])->getRow();
+        $brandModel = new \App\Models\Brand();
+        return $brandModel->find($this->brand_id); // Fetch the related brand using brand_id
     }
-    
-    // Get Image Path with Domain URL
-    public function getImagePath($imagePath)
+
+    // Get Full Image Path with Domain URL
+    public function getImagePath()
     {
-        return getenv('DOMAIN_URL') . '/uploads/' . $imagePath;
+        return getenv('DOMAIN_URL') . '/uploads/' . $this->image_path;
     }
 }
