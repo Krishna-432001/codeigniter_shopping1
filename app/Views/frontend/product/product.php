@@ -13,7 +13,7 @@
             <?php foreach ($products as $product): ?>
                 <div class="col-md-3">
                     <div class="product-card">
-                        <a href="<?= site_url('product_detail/' . $product['id']) ?>" class="product-link">
+                        <a href="<?= site_url('show/' . $product['id']) ?>" class="product-link">
                             <img src="<?= base_url($product['image_path']) ?>" alt="<?= esc($product['name']) ?>" class="product-image">
                             <h4><?= esc($product['name']) ?></h4>
                             <p>Price: $<?= number_format($product['price'], 2) ?></p>
