@@ -7,6 +7,8 @@ use CodeIgniter\HTTP\ResponseInterface;
 
 use App\Models\Category;
 
+use App\Models\Product;
+
 class HomeController extends BaseController
 {
     public function index()
@@ -16,6 +18,10 @@ class HomeController extends BaseController
         
         // Fetch all categories
         $data['categories'] = $category->findAll(); 
+
+        $product = new Product();
+
+        $data['products'] = $product->findAll();
 
         return view('frontend/home', $data);
     }

@@ -8,7 +8,7 @@ class ProductScreen extends BaseController
 {
     public function index()
     {
-        $model = new ProductModel();
+        $product = new Product();
         $data['products'] = $model->findAll(); // Fetch all products from the database
 
         return view('frontend/products/product_screen', $data); // Load the product screen view
