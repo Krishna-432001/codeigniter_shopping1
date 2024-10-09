@@ -7,11 +7,11 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->get('/', 'HomeController::index');
 
-$routes->get('/frontend/about', 'HomeController::about');
+$routes->get('/frontend/auth/about', 'HomeController::about');
 
-$routes->get('/frontend/services', 'HomeController::services');
+$routes->get('/frontend/auth/services', 'HomeController::services');
 
-$routes->get('/frontend/contact', 'HomeController::contact');
+$routes->get('/frontend/auth/contact', 'HomeController::contact');
 
 
 
@@ -52,7 +52,7 @@ $routes->group('frontend/product', ['namespace' => 'App\Controllers'], function(
 
     $routes->get('product', 'ProductController::index', ['as' => 'home.product']);
 
-    $routes->get('product_detail/(:num)', 'ProductController::detail/$1', ['as' => 'home.product_detail/(:num)']); // Product detail route
+    $routes->get('show/(:num)', 'ProductController::show/$1', ['as' => 'home.show']); // Product detail route
 
     
 });
