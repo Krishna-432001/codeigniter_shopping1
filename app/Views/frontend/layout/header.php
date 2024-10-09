@@ -79,7 +79,7 @@
             <li><a href="<?= base_url('frontend/contact') ?>">Contact Us</a></li>
             <li><a href="<?= base_url('frontend/login') ?>">Login</a></li>
             <li><a href="<?= base_url('frontend/register') ?>">Register</a></li>
-            <li><a href="<?= base_url('frontend/product_screen') ?>">Products</a></li>
+            <li><a href="<?= base_url('frontend/product') ?>">Products</a></li>
             <li><a href="<?= base_url('frontend/category_screen') ?>">Categories</a></li>
             <!-- Profile Dropdown -->
             <li>
