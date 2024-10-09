@@ -201,10 +201,7 @@
         <?php if (!empty($products)): ?>  <!-- Check if products exist -->
             <?php foreach ($products as $product): ?>
                 <div class="product-card">
-                    <div class="product-image" style="background-image: url('<?= base_url('images/products/' . $product['image_path']) ?>');">
-                        <!-- Debugging output for image URL -->
-                        <p style="display: none;"><?= base_url('images/products/' . $product['image_path']) ?></p> <!-- Hidden for debugging -->
-                    </div>
+                <img src="<?= base_url($product['image_path']) ?>" alt="<?= esc($product['name']) ?>" class="product-image">
                     <div class="product-info">
                         <h3><?= $product['name'] ?></h3>
                         <p><?= $product['description'] ?></p>
