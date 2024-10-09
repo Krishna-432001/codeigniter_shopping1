@@ -27,6 +27,17 @@ $routes->group('frontend', ['namespace' => 'App\Controllers'], function($routes)
 
     $routes->post('store', 'AuthController::store');
 
+    $routes->get('product', 'ProductController::index');
+
+    $routes->get('product_detail/(:num)', 'ProductController::detail/$1'); // Product detail route
+
+    // cartcontroller
+    $routes->get('cart', 'CartController::index');
+    $routes->post('cart/add/(:num)', 'CartController::add/$1');
+    $routes->post('cart/update/(:num)', 'CartController::update/$1');
+    $routes->get('cart/remove/(:num)', 'CartController::remove/$1');
+    $routes->get('cart/clear', 'CartController::clear');
+
 });
 
 //categoryController
@@ -34,10 +45,16 @@ $routes->get('categories', 'CategoryController::index');
 
 $routes->post('submit-category', 'CategoryController::submitCategory');
 
-//productController
-$routes->get('/products', 'ProductScreen::index');
 
-$routes->get('product/detail/(:num)', 'ProductController::detail/$1'); // Product detail route
+
+
+// cartcontroller
+$routes->get('cart', 'CartController::index');
+$routes->post('cart/add/(:num)', 'CartController::add/$1');
+$routes->post('cart/update/(:num)', 'CartController::update/$1');
+$routes->get('cart/remove/(:num)', 'CartController::remove/$1');
+$routes->get('cart/clear', 'CartController::clear');
+
 
 
 
