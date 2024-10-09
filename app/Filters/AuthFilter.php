@@ -6,7 +6,7 @@ use CodeIgniter\Filters\FilterInterface;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 
-use App\libraries\OwnAuth;
+use App\Libraries\OwnAuth;
 
 class AuthFilter implements FilterInterface
 {
