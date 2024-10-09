@@ -2,32 +2,32 @@
 
 namespace App\Controllers;
 
-use App\Models\ProductModel;
+use App\Models\Product;
 
-class ProductScreen extends BaseController
+class ProductController extends BaseController
 {
     public function index()
     {
         $product = new Product();
-        $data['products'] = $model->findAll(); // Fetch all products from the database
+        $data['products'] = $product->findAll(); // Fetch all products from the database
 
-        return view('frontend/products/product_screen', $data); // Load the product screen view
+        return view('frontend/product', $data); // Load the product screen view
     }
 
     public function detail($id)
 {
     // Load your model
-    $productModel = new ProductModel();
+    $product = new Product();
 
     // Fetch the product details
-    $product = $productModel->find($id);
+    $product = $product->find($id);
 
     // Check if the product exists
     if (!$product) {
         throw new \CodeIgniter\Exceptions\PageNotFoundException("Product not found");
     }
-
+    $data['product'] = $product;
     // Pass the product data to the view
-    return view('frontend/product/detail', ['product' => $product]);
+    return view('frontend/product_detail', $data);
 }
 }
