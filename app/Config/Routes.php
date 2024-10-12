@@ -30,7 +30,7 @@ $routes->group('frontend/auth', ['namespace' => 'App\Controllers'], function($ro
 
         $routes->post('store', 'AuthController::store', ['as' => 'home.store']);
 
-        $routes->post('logout', 'AuthController::logout', ['as' => 'home.logout']);
+        $routes->get('logout', 'AuthController::logout', ['as' => 'home.logout']);
     });
 });
 
@@ -64,7 +64,7 @@ $routes->group('frontend/category', ['namespace' => 'App\Controllers'], function
 //categoryController
 $routes->get('categories', 'CategoryController::index', ['as' => 'home.categories']);
 
-$routes->post('submit-category', 'CategoryController::submitCategory', ['as' => 'home.submit-category']);
+$routes->get('submit-category', 'CategoryController::submitCategory', ['as' => 'home.submit-category']);
 
 });
 
