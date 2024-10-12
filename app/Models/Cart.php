@@ -20,6 +20,26 @@ class Cart extends Model
         'updated_at'      // Timestamp for when the item was last updated
     ];
 
+     // Method to join cart and product tables
+     public function getCartWithProductDetails()
+     {
+         return $this->select('carts.*, products.name as product_name, products.price, products.image_path')
+                     ->join('products', 'carts.product_id = products.id')
+                     ->findAll(); // fetch all cart items with product details
+     }
+
+      // Method to remove a specific cart item
+    public function removeCartItem($userId, $productId)
+    {
+        return $this->where(['user_id' => $userId, 'product_id' => $productId])->delete();
+    }
+
+    // Method to clear the entire cart for a user
+    public function clearCart($userId)
+    {
+        return $this->where('user_id', $userId)->delete();
+    }
+
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;
