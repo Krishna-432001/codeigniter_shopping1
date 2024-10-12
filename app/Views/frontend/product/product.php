@@ -20,9 +20,7 @@
                             <p>Quantity: <?= esc($product['qty']) ?></p>
                             <p><?= esc($product['description']) ?></p>
                         </a>
-                        <form action="<?= site_url('cart/add/' . $product['id']) ?>" method="post">
-                            <button type="submit" class="btn btn-primary">Add to Cart</button>
-                        </form>
+                        <a class="btn btn-primary" href="<?= site_url('frontend/cart/add/' . $product['id']) ?>">Add to Cart</a>
                     </div>
                 </div>
 
