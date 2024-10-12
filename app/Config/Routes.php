@@ -39,55 +39,61 @@ $routes->group('frontend/auth', ['namespace' => 'App\Controllers'], function($ro
     $routes->get('logout', 'AuthController::logout', ['as' => 'home.logout']);
 });
 
-    $routes->group('frontend/cart', ['namespace' => 'App\Controllers'], function($routes) {
+$routes->group('frontend/cart', ['namespace' => 'App\Controllers'], function($routes) {
 
     // after Login
     $routes->group('', ['filter' => 'authfilter:auth'], function($routes) {
 
         // cartcontroller
-        $routes->get('cart_screen', 'CartController::index', ['as' => 'home.cart_screen']); // View the cart
+        $routes->get('/', 'CartController::index', ['as' => 'cart.index']); // View the cart
         $routes->get('add/(:num)', 'CartController::add/$1', ['as' => 'cart.add/(:num)']); // Add product to cart
         $routes->get('cart/remove/(:num)', 'CartController::remove/$1');
         $routes->get('/cart/increase/(:num)', 'CartController::increaseQuantity/$1');
         $routes->get('/cart/decrease/(:num)', 'CartController::decreaseQuantity/$1');
         $routes->get('clear', 'CartController::clear');
-        
 
-        $routes->group('frontend/order',['namespace' => 'App\Controllers'], function($routes) {
-            // Route for checkout page with product ID
-            $routes->get('checkout/(:num)', 'orderController::index/$1'); // Route for checkout
-
-            // $routes->get('frontend/order/checkout', 'OrderController::checkout')->setName('order.checkout');
-
-
-        
-            // Route to place an order
-            $routes->post('place-order', 'OrderController::placeOrder');
-        
-            // Route for payment page
-            $routes->get('payment/(:num)', 'OrderController::payment/$1');
-        
-            // Route for successful payment
-            $routes->post('payment-success/(:num)', 'OrderController::paymentSuccess/$1');
-        
-            // Route for order success page
-            $routes->get('success/(:num)', 'OrderController::success/$1');
-        
-            // Route for viewing order history
-            $routes->get('history', 'OrderController::orderHistory');
-        
-            // Route for viewing order details
-            $routes->get('detail/(:num)', 'OrderController::orderDetail/$1');
-        
-            // Route for generating QR code for payment
-            $routes->get('generate-qr/(:any)/(:num)', 'OrderController::generateQrCode/$1/$2');
-        
-            // Route for processing payment
-            $routes->post('process-payment', 'OrderController::processPayment');
-        });
-        
-    
     });
+});
+
+$routes->group('frontend/order',['namespace' => 'App\Controllers'], function($routes) {
+    // Route for checkout page with product ID
+    $routes->get('checkout/(:num)', 'OrderController::checkout/$1'); // Route for checkout
+
+    $routes->get('confirmation/(:num)', 'OrderController::confirmation/$1'); // Route for order confirmation
+
+   
+
+    // $routes->get('frontend/order/checkout', 'OrderController::checkout')->setName('order.checkout');
+
+    $routes->get('order_history', 'OrderController::order_history');
+
+
+    // Route to place an order
+    $routes->post('place-order', 'OrderController::placeOrder');
+
+    // Route for payment page
+    $routes->get('payment/(:num)', 'OrderController::payment/$1');
+
+    // Route for successful payment
+    $routes->post('payment-success/(:num)', 'OrderController::paymentSuccess/$1');
+
+    // Route for order success page
+    $routes->get('success/(:num)', 'OrderController::success/$1');
+
+    // Route for viewing order history
+    $routes->get('history', 'OrderController::orderHistory');
+
+    // Route for viewing order details
+    $routes->get('detail/(:num)', 'OrderController::orderDetail/$1');
+
+    // Route for generating QR code for payment
+    $routes->get('generate-qr/(:any)/(:num)', 'OrderController::generateQrCode/$1/$2');
+
+    // 
+    $routes->post('/create', 'OrderController::createRazorpayOrder');
+
+    // Route for processing payment
+    $routes->post('processPayment', 'OrderController::processPayment');
 });
 
     
