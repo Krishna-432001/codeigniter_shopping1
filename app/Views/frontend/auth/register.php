@@ -162,7 +162,12 @@
 
     <div class="form-container">
         <h2>Register</h2>
-        <form action="<?= base_url('register') ?>" method="post">
+        <?php if (session()->has('error')): ?>
+            <div class="alert alert-danger">
+                <?php echo session('error'); ?>
+            </div>
+        <?php endif; ?>
+        <form action="<?= base_url('frontend/auth/store') ?>" method="post">
             <?= csrf_field() ?> <!-- CSRF protection -->
             <div class="form-group">
                 <label for="name">Name:</label>
