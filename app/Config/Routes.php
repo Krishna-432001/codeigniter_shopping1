@@ -64,7 +64,8 @@ $routes->group('frontend/category', ['namespace' => 'App\Controllers'], function
 //categoryController
 $routes->get('categories', 'CategoryController::index', ['as' => 'home.categories']);
 
-$routes->get('submit-category', 'CategoryController::submitCategory', ['as' => 'home.submit-category']);
+$routes->post('submitcategory', 'CategoryController::submitCategory');
+
 
 });
 
