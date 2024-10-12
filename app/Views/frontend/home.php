@@ -201,6 +201,7 @@
         <?php if (!empty($products)): ?>  <!-- Check if products exist -->
             <?php foreach ($products as $product): ?>
                 <div class="product-card">
+                <a href="<?= site_url('frontend/product/show/' . $product['id']) ?>" class="product-link">
                 <img src="<?= base_url($product['image_path']) ?>" alt="<?= esc($product['name']) ?>" class="product-image">
                     <div class="product-info">
                         <h3><?= $product['name'] ?></h3>
