@@ -88,9 +88,7 @@
                     <a href="#">Profile</a>
                     <ul>
                         <li><a href="<?= base_url('frontend/auth/my_profile') ?>">My Profile</a></li>
-                        <li><a href="<?= base_url('frontend/cart/cart_screen') ?>">Cart</a></li>
-                        <li><a href="<?= base_url('frontend/order/orders') ?>">Orders</a></li>
-                        <li><a href="<?= base_url('frontend/order/order_items') ?>">Order Items</a></li>
+                        <li><a href="<?= base_url('frontend/cart') ?>">Cart</a></li>
                         <li><a href="<?= base_url('frontend/order/order_history') ?>">Order History</a></li>
                         <li><a href="<?= base_url('frontend/auth/logout') ?>">Logout</a></li>
                         <li><a href="<?= base_url('frontend/auth/settings') ?>">Settings</a></li>
