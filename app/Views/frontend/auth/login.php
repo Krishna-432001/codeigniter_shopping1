@@ -162,6 +162,12 @@
 
     <div class="form-container">
         <h2>Login</h2>
+        <?php if (session()->has('success')): ?>
+            <div class="alert alert-success">
+                <?php echo session('success'); ?>
+            </div>
+        <?php endif; ?>
+
         <?php if (session()->has('error')): ?>
         <div class="alert alert-danger">
             <?php echo session('error'); ?>
