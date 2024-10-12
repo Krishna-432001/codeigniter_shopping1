@@ -40,8 +40,8 @@ class CartController extends BaseController
     public function add($product_id = null) 
 {
     // Assume the user is logged in and you can get user ID from the session
-    // $user_id = session()->get('user_id');
-    $user_id = 1;
+    $user_id = session()->get('user')['id'];
+    // $user_id = 1;
 
     // Retrieve quantity from the URL query parameter
     $quantity = $this->request->getGet('quantity') ? (int)$this->request->getGet('quantity') : 1; // Default to 1 if not provided
@@ -245,9 +245,11 @@ class CartController extends BaseController
     {
         $userId = session()->get('user')['id']; // Get the logged-in user ID
 
+        // dd($this->cart->clearCart($userId));
+
         // Call the model method to clear the cart
         if ($this->cart->clearCart($userId)) {
-            return redirect()->to('/cart_screen')->with('success', 'Cart cleared successfully.');
+            return redirect()->route('cart.index')->with('success', 'Cart cleared successfully.');
         } else {
             return redirect()->to('/cart_screen')->with('error', 'Failed to clear cart.');
         }
