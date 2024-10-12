@@ -17,13 +17,26 @@
         <p class="product-alert-stock">Alert Stock: <?= esc($product['alert_stock']); ?></p>
         <p class="product-description"><?= esc($product['description']); ?></p>
 
+        <!-- Quantity input field -->
+        <div class="product-quantity-section">
+            <label for="qty">Quantity:</label>
+            <input type="number" id="qty" name="qty" value="1" min="1" max="<?= esc($product['qty']); ?>" class="product-quantity-input">
+        </div>
+
         <!-- Add to Cart and Buy Now buttons -->
         <div class="product-actions">
-            <a href="<?= route_to('cart.add', $product['id']) ?>" class="btn btn-add-cart">Add to Cart</a>
-            <a href="<?= route_to('order.buy', $product['id']) ?>" class="btn btn-buy-now">Buy Now</a>
+            <a href="/frontend/cart/add/<?= $product['id'] ?>?qty=" class="btn btn-add-cart" 
+               onclick="this.href += document.getElementById('qty').value">Add to Cart</a>
+
+               <a href="/frontend/order/confirmation/<?= $product['id'] ?>" class="btn btn-buy-now">Buy Now</a>
+               <a href="<?= base_url('frontend/order/confirmation/' . $product['id']); ?>">View Confirmation</a>
+
+
+
         </div>
     </div>
 </div>
+
 
 <style>
     /* General Styling */
