@@ -71,19 +71,60 @@ class AuthController extends BaseController
 
     public function store()
     {
-        // Validate and store user registration data
-        $validation = $this->validate([
-            'name' => 'required|min_length[3]',
-            'email' => 'required|valid_email',
-            'password' => 'required|min_length[6]'
-        ]);
+        // Load the User and Role models
+        $user = new User();
+      
 
-        if (!$validation) {
+        // Define validation rules
+        $validationRules = [
+            'name' => 'required',
+            'email' => 'required|valid_email',
+            'password' => 'required|min_length[6]',
+            // 'confirmPassword' => 'required|matches[password]',
+            // 'phone' => 'required',
+            // 'address' => 'required',
+            // 'pincode' => 'required',
+            // 'country' => 'required',
+            // 'captcha' => 'required'
+        ];
+
+        // Validate the request
+        if (!$this->validate($validationRules)) {
+            // Validation failed, return errors
             return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
         }
 
-        // Proceed to save the user data in the database and redirect
-        session()->setFlashdata('success_message', 'Registration successful!');
-        return redirect()->to('/login');
+        try {
+            // Create a new user
+            $data = [
+                'name' => $this->request->getPost('name'),
+                // 'gender' => $this->request->getPost('gender'),
+                'email' => $this->request->getPost('email'),
+                'password' => password_hash($this->request->getPost('password'), PASSWORD_BCRYPT), // Hash the password
+                // 'phone' => $this->request->getPost('phone'),
+                // 'address' => $this->request->getPost('address'),
+                // 'pincode' => $this->request->getPost('pincode'),
+                // 'country' => $this->request->getPost('country'),
+            ];
+
+            // Insert user into the database
+            $user->insert($data);
+            $userId = $user->insertID(); // Get the last inserted ID
+
+            // Assign the 'Customer' role to the user
+        
+
+            // Set success message
+            session()->setFlashdata('success', 'User registered successfully');
+
+            // Redirect or return response
+            return redirect()->to('/frontend/auth/login')->with('success', 'Registration successful!');    
+        } 
+        catch (ValidationException $e) {
+            // Validation failed, return errors
+            return redirect()->back()->withInput()->with('errors', $e->getMessage());
+        }
     }
+
+    
 }
