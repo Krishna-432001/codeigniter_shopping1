@@ -37,7 +37,14 @@ class Cart extends Model
     // Method to clear the entire cart for a user
     public function clearCart($userId)
     {
-        return $this->where('user_id', $userId)->delete();
+        if ($this->where('user_id', $userId)->delete()) 
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
 
