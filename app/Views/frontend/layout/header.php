@@ -73,6 +73,14 @@
     <nav>
         <h1 style="font-size: 2.5em;">Welcome to Our Website</h1>
         <ul>
+            
+            <li><a href="<?= base_url('/') ?>">Home</a></li>
+            <li><a href="<?= base_url('frontend/auth/about') ?>">About Us</a></li>
+            <li><a href="<?= base_url('frontend/auth/services') ?>">Services</a></li>
+            <li><a href="<?= base_url('frontend/auth/contact') ?>">Contact Us</a></li>
+            <li><a href="<?= base_url('frontend/product/product') ?>">Products</a></li>
+            <li><a href="<?= base_url('frontend/category/category_screen') ?>">Categories</a></li>
+
             <?php if(session()->has('user')): ?>
                 <!-- User is logged in -->
                   <!-- Profile Dropdown -->
@@ -80,7 +88,7 @@
                     <a href="#">Profile</a>
                     <ul>
                         <li><a href="<?= base_url('frontend/auth/my_profile') ?>">My Profile</a></li>
-                        <li><a href="<?= base_url('frontend/cart/cart') ?>">Cart</a></li>
+                        <li><a href="<?= base_url('frontend/cart/cart_screen') ?>">Cart</a></li>
                         <li><a href="<?= base_url('frontend/order/orders') ?>">Orders</a></li>
                         <li><a href="<?= base_url('frontend/order/order_items') ?>">Order Items</a></li>
                         <li><a href="<?= base_url('frontend/order/order_history') ?>">Order History</a></li>
@@ -94,12 +102,6 @@
                 <li><a href="<?= base_url('frontend/auth/login') ?>">Login</a></li>
                 <li><a href="<?= base_url('frontend/auth/register') ?>">Register</a></li>
             <?php endif; ?>
-            <li><a href="<?= base_url('/') ?>">Home</a></li>
-            <li><a href="<?= base_url('frontend/auth/about') ?>">About Us</a></li>
-            <li><a href="<?= base_url('frontend/auth/services') ?>">Services</a></li>
-            <li><a href="<?= base_url('frontend/auth/contact') ?>">Contact Us</a></li>
-            <li><a href="<?= base_url('frontend/product/product') ?>">Products</a></li>
-            <li><a href="<?= base_url('frontend/category/category_screen') ?>">Categories</a></li>
            
         </ul>
     </nav>
